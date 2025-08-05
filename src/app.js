@@ -5,8 +5,8 @@ import indexRouter from "./routes/index.routes.js";
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
-"https://288fe661ae62.ngrok-free.app",
-"http://192.168.1.5:4000"
+  "8b50a9759197.ngrok-free.app",
+   "http://192.168.1.5:4000"
 ];
 
 app.use(cors({
