@@ -74,7 +74,6 @@ export default uploadFiles;
 const getFiles = async (req, res) => {
   try {
     let { uniqueCode } = req.params;
-    uniqueCode = uniqueCode.trim();
     if (!uniqueCode) {
       return res.status(400).json({
         success: false,
@@ -93,10 +92,16 @@ const getFiles = async (req, res) => {
       });
     }
 
+    const filesData = details.urls.map(fileObject => ({
+      fileName : fileObject.fileName,
+      previewUrl:`https://sendfile-backend.onrender.com/api/v1/file-manager/fetch/files/${fileObject._id}/${fileObject.fileName}`,
+      downloadUrl:`https://sendfile-backend.onrender.com/api/v1/file-manager/download/files/${fileObject._id}/${fileObject.fileName}`
+    }))
+
     return res.status(200).json({
       success: true,
       message: "File details fetched successfully",
-      data: details,
+      data: filesData,
     });
 
   } catch (err) {

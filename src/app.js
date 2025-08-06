@@ -5,7 +5,7 @@ import indexRouter from "./routes/index.routes.js";
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
-  "8b50a9759197.ngrok-free.app",
+  "https://51f10a69470d.ngrok-free.app",
   "https://8b50a9759197.ngrok-free.app",
    "http://192.168.1.5:4000"
 ];

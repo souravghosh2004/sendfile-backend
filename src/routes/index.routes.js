@@ -9,6 +9,10 @@ router.get('/hi', (req,res) => {
 })
 
 import userRouter from "./user.routes.js";
-router.use("/user",userRouter)
+router.use("/user",userRouter);
+
+
+import proxyRouter from "./proxy.routes.js"
+router.use("/file-manager",proxyRouter);
 
 export default router;
