@@ -30,8 +30,34 @@ const proxyFile = async (req, res) => {
             responseType:"stream"
         })
 
-        res.setHeader('Content-Type',response.headers['content-type']);
-        res.setHeader('Content-Disposition',`inline; filename="${file.fileName}"`)
+        // Get file extension
+    const ext = file.fileName.split('.').pop().toLowerCase();
+
+    // Map known extensions to content types
+    const contentTypes = {
+        txt: "text/plain",
+        py: "text/plain",
+        java: "text/plain",
+        js: "text/javascript",
+        json: "application/json",
+        md: "text/markdown",
+        html: "text/html",
+        css: "text/css",
+        csv: "text/csv",
+        pdf: "application/pdf",
+        jpg: "image/jpeg",
+        jpeg: "image/jpeg",
+        png: "image/png",
+        gif: "image/gif",
+        webp: "image/webp"
+    };
+
+    const contentType = contentTypes[ext] || response.headers['content-type'] || 'application/octet-stream';
+
+// Set headers
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', `inline; filename="${file.fileName}"`);
+
 
         response.data.pipe(res)
 

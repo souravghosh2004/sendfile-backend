@@ -15,7 +15,8 @@ const fileDetailsSchema = new Schema({
    
     urls : [{
         url:{type:String},
-        fileName:{type:String}
+        fileName:{type:String},
+        pubicId : {type:String},
     }]
 },{timestamps : true});
 
