@@ -3,6 +3,9 @@ import checkConnection from '../controllers/check.controllers.js';
 const router = express.Router();
 
 router.get("/check",checkConnection);
+router.head("/health", (req, res) => {
+  res.sendStatus(200);
+});
 
 router.get('/hi', (req,res) => {
     res.send("Hey , I'm a server!");
