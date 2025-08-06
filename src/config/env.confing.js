@@ -19,3 +19,8 @@ export {CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET}
 // JWT ENVIORNMENT
 const JWT_SECRET = process.env.JWT_SECRET;
 export {JWT_SECRET};
+
+
+// mode
+const NODE_ENV = process.env.NODE_ENV;
+export {NODE_ENV};

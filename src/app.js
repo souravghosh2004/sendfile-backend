@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import indexRouter from "./routes/index.routes.js";
+import { NODE_ENV } from './config/env.confing.js';
+
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
@@ -25,7 +27,10 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(morgan('dev'));
+if(NODE_ENV != "production"){
+  app.use(morgan('dev'));
+}
+
 
 app.use("/api/v1",indexRouter)
 
