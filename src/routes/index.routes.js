@@ -18,4 +18,8 @@ router.use("/user",userRouter);
 import proxyRouter from "./proxy.routes.js"
 router.use("/file-manager",proxyRouter);
 
+
+import textRouter from "./text.routes.js"
+router.use("/text",textRouter);
+
 export default router;
