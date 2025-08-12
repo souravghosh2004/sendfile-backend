@@ -8,7 +8,7 @@ const checkAuth = async (req, res) => {
     }
 
     try {
-        const decoded = verifyToken(token); // verifyToken should throw if invalid
+        const decoded =  verifyToken(token); // verifyToken should throw if invalid
         res.status(200).json({ success: true, message: "Valid user", data: decoded });
     } catch (err) {
         res.clearCookie("auth_token");

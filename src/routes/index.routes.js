@@ -25,4 +25,7 @@ router.use("/text",textRouter);
 import authRouter from "./auth.routes.js";
 router.use("/auth",authRouter);
 
+import uniqueCodeRoutes from "../routes/uniqueCode.routes.js";
+router.use("/uniqueCode", uniqueCodeRoutes)
+
 export default router;

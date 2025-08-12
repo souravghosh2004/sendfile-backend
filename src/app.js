@@ -32,7 +32,20 @@ if(NODE_ENV != "production"){
   app.use(morgan('dev'));
 }
 
+import rateLimit from "express-rate-limit";
+app.set("trust proxy", 1);
 
-app.use("/api/v1",indexRouter)
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 100, // limit each IP to 100 requests
+  message: { 
+    success: false, 
+    message: "Too many requests from this IP, please try again later." 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use("/api/v1",apiLimiter,indexRouter)
 
 export default app;

@@ -35,11 +35,12 @@ const uploadFiles = async (req, res) => {
 
     // get owner from token
     let owner = null;
-    const token = req?.cookies?.auth_token || null;
+    const token = req.cookies?.auth_token || null;
     if(token){
       const decode = verifyToken(token);
+      console.log("decode token = ",decode)
       if(decode){
-        owner = decode._id; // or decode.userId
+        owner = decode.userId; // or decode.userId
       }
     }
 
@@ -116,3 +117,9 @@ const getFiles = async (req, res) => {
 
 
 export {getFiles};
+
+
+
+
+
+
