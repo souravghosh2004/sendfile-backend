@@ -22,4 +22,7 @@ router.use("/file-manager",proxyRouter);
 import textRouter from "./text.routes.js"
 router.use("/text",textRouter);
 
+import authRouter from "./auth.routes.js";
+router.use("/auth",authRouter);
+
 export default router;
