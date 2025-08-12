@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import indexRouter from "./routes/index.routes.js";
 import { NODE_ENV } from './config/env.confing.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const allowedOrigins = [
@@ -22,7 +23,7 @@ app.use(cors({
 }));
 
 
-
+app.use(cookieParser());
 
 
 app.use(express.json());
